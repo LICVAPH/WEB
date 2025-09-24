@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTE&PLAYERA - Playeras Personalizadas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-white: #FFFFFF;
+            --color-dark-green: #1B4332;
+            --color-green: #2D6A4F;
+            --color-light-green: #40916C;
+            --color-yellow: #F9C74F;
+            --color-light-yellow: #FFE15A;
+            --color-gray: #4A4E69;
+            --color-light-gray: #F8F9FA;
+            --spacing: 1rem;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--color-white);
+            color: var(--color-dark-green);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header y Navegación */
+        header {
+            background-color: var(--color-white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.5rem 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-dark-green);
+        }
+        
+        .logo span {
+            color: var(--color-green);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-dark-green);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-yellow);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--color-green);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-green);
+            color: var(--color-white);
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--color-dark-green);
+            transform: translateY(-2px);
+        }
+        
+        .btn-yellow {
+            background-color: var(--color-yellow);
+            color: var(--color-dark-green);
+        }
+        
+        .btn-yellow:hover {
+            background-color: var(--color-light-yellow);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.8), rgba(27, 67, 50, 0.8)), url('bannermarca.png') no-repeat center center/cover;
+            color: var(--color-white);
+            text-align: center;
+            padding: 6rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1.2rem;
+            border-radius: var(--border-radius);
+        }
+        
+        .feature i {
+            color: var(--color-yellow);
+            font-size: 1.5rem;
+        }
+        
+        .feature span {
+            color: var(--color-white);
+        }
+        
+        /* Secciones */
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--color-dark-green);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background-color: var(--color-yellow);
+            bottom: -10px;
+            left: 20%;
+        }
+        
+        .section-title p {
+            color: var(--color-gray);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+        }
+        
+        /* Filosofía */
+        .philosophy {
+            background-color: var(--color-light-gray);
+        }
+        
+        .philosophy-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .philosophy-text {
+            max-width: 800px;
+            margin-bottom: 3rem;
+        }
+        
+        .philosophy-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-dark-green);
+        }
+        
+        .philosophy-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-gray);
+        }
+        
+        .values {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background-color: var(--color-white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            transition: transform 0.3s;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--color-green);
+            margin-bottom: 1rem;
+        }
+        
+        .value-card h3 {
+            margin-bottom: 1rem;
+            color: var(--color-dark-green);
+        }
+        
+        .value-card p {
+            color: var(--color-gray);
+        }
+        
+        /* Productos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+            border: 1px solid var(--color-light-gray);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 250px;
+            background-color: var(--color-light-gray);
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--color-dark-green);
+        }
+        
+        .rating {
+            color: var(--color-yellow);
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-green);
+            margin-bottom: 1rem;
+        }
+        
+        /* Historia */
+        .history {
+            background-color: var(--color-light-gray);
+        }
+        
+        .history-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .history-text {
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .history-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: var(--color-gray);
+        }
+        
+        /* Galería */
+        .gallery {
+            padding: 5rem 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-img {
+            height: 250px;
+            background-color: var(--color-light-gray);
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .gallery-caption {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery-caption h3 {
+            margin-bottom: 0.5rem;
+            color: var(--color-dark-green);
+        }
+        
+        .gallery-caption p {
+            color: var(--color-gray);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-dark-green);
+            color: var(--color-white);
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--color-yellow);
+        }
+        
+        .footer-section p {
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-yellow);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: var(--color-white);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--color-yellow);
+        }
+        
+        .location-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .location-img {
+            width: 150px;
+            height: 150px;
+            border-radius: var(--border-radius);
+            object-fit: cover;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .values {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .value-card {
+                width: 100%;
+            }
+            
+            .location-container {
+                flex-direction: column;
+            }
+            
+            .location-img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="logo.png" alt="Logo ARTE&PLAYERA" class="logo-img">
+                    <div class="logo">ARTE<span>&</span>PLAYERA</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#proceso">Nuestro Proceso</a></li>
+                    <li><a href="#galeria">Galería</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Diseños Únicos que Conectan</h1>
+            <p>No se trata solo de vender, sino de crear una conexión. Cada playera cuenta una historia única.</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-yellow">Explorar Diseños</a>
+                <a href="#galeria" class="btn">Ver Galería</a>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-tshirt"></i>
+                    <span>100% Algodón</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Diseño Personalizado</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-truck"></i>
+                    <span>Envío Gratis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filosofía -->
+    <section class="philosophy" id="proceso">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Filosofía</h2>
+                <p><strong>No se trata solo de vender. Sino de crear una conexión.</strong></p>
+            </div>
+            <div class="philosophy-content">
+                <div class="philosophy-text">
+                    <p>Creemos que cada playera es un lienzo en blanco lleno de posibilidades. Nuestro objetivo es transformar ideas en arte wearable que refleje tu personalidad única.</p>
+                </div>
+                <div class="values">
+                    <div class="value-card">
+                        <i class="fas fa-palette"></i>
+                        <h3>Pasión por el Arte</h3>
+                        <p>Cada diseño nace de la creatividad y el amor por el arte visual.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Conexión Humana</h3>
+                        <p>Construimos relaciones duraderas con cada cliente y su historia.</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-magic"></i>
+                        <h3>Personalización Total</h3>
+                        <p>Tu imaginación es el único límite para crear algo verdaderamente único.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="productos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestras Creaciones</h2>
+                <p>Descubre nuestra colección de diseños únicos, cada uno con su propia personalidad y estilo.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('modelo3.png');"></div>
+                    <div class="product-info">
+                        <h3>Diseño Abstracto Colorido</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>+4.9</span>
+                        </div>
+                        <div class="price">$299</div>
+                        <a href="#contacto" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('modelo2.jpeg');"></div>
+                    <div class="product-info">
+                        <h3>Arte Minimalista</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>+4.8</span>
+                        </div>
+                        <div class="price">$249</div>
+                        <a href="#contacto" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('expresion.png');"></div>
+                    <div class="product-info">
+                        <h3>Expresión Urbana</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>+4.9</span>
+                        </div>
+                        <div class="price">$329</div>
+                        <a href="#contacto" class="btn">Solicitar</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1618354691373-d851c5c3a990?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=715&q=80');"></div>
+                    <div class="product-info">
+                        <h3>Naturaleza Rústica</h3>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>+4.7</span>
+                        </div>
+                        <div class="price">$279</div>
+                        <a href="#contacto" class="btn">Solicitar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section class="gallery" id="galeria">
+        <div class="container">s
+            <div class="section-title">
+                <h2>Nuestra Galería</h2>
+                <p>Explora nuestra colección de trabajos que reflejan nuestra filosofía y valores.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-image: url('pasion.png');"></div>
+                    <div class="gallery-caption">
+                        <h3>Pasión por el Arte</h3>
+                        <p>Diseños únicos creados con amor y dedicación por artistas locales.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-image: url('conexion.png');"></div>
+                    <div class="gallery-caption">
+                        <h3>Conexión Humana</h3>
+                        <p>Creando vínculos a través de diseños que cuentan historias personales.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-image: url('personalizacion.png');"></div>
+                    <div class="gallery-caption">
+                        <h3>Personalización Total</h3>
+                        <p>Transformamos tus ideas en playeras únicas que reflejan tu estilo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia -->
+    <section class="history">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestra Historia</h2>
+            </div>
+            <div class="history-content">
+                <div class="history-text">
+                    <p>Todo comenzó con una simple observación: aquí, como en muchos lugares, hay grandes talentos artísticos. Artistas con ideas geniales, pero sin una plataforma para mostrar su trabajo y llegar a más gente, lo cual los lleva a la búsqueda de expresar su individualidad, de destacar entre la multitud. Y, ¿qué mejor manera de hacerlo que a través de la ropa que usamos?</p>
+                    <p>Así nació la idea de "ARTE&PLAYERA": un espacio donde el arte local se fusiona con la moda urbana personalizada. No se trata solo de vender playeras, sino de crear una conexión.</p>
+                    <p>ARTE&PLAYERA es un negocio dedicado a la personalización de playeras, cuyo objetivo es conectar a artistas locales con clientes que buscan productos únicos y creativos. La empresa ofrece playeras de alta calidad con diseños originales, fomentando la cultura local y la expresión personal de cada cliente. Además, busca consolidarse como un espacio creativo que apoya el talento local y promueve la moda urbana personalizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ARTE&PLAYERA</h3>
+                    <p>No se trata solo de vender, sino de crear una conexión. Cada playera cuenta una historia única.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#proceso">Nuestro Proceso</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Calle Mariano Abasolo 506, Colonia Centro, Ciudad Martínez de la Torre, Veracruz</p>
+                    <div class="location-container">
+                        <div>
+                            <p><i class="fas fa-phone"></i> Teléfono: 232 895 5687</p>
+                            <p><i class="fas fa-envelope"></i> Email: info@arteyplayera.com</p>
+                        </div>
+                        <img src="direccion.png" alt="Ubicación ARTE&PLAYERA" class="location-img">
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 ARTE&PLAYERA - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
